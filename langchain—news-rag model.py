@@ -12,15 +12,15 @@ import pickle
 # 加载环境变量
 load_dotenv(find_dotenv())
 
-## 初始化Dashscope Embeddings
+## 初始化Dashscope Embeddings,阿里云api
 embeddings = DashScopeEmbeddings(
     model="text-embedding-v3",
-    dashscope_api_key="sk-11d21951a0ad4c6599138de1cb50ac24",
+    dashscope_api_key="",
 )
 llm = ChatOpenAI(
     model="qwen2.5-32b-instruct",
     base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
-    api_key="sk-11d21951a0ad4c6599138de1cb50ac24"
+    api_key=""
 )
 
 # ####下面是离线部分####
@@ -97,4 +97,5 @@ response = qa_chain.invoke({"query":"什么是中药零食"
 print(response["result"])
 print("-"*100)
 #输出回答来源
+
 print (response["source_documents"])
